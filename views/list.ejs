@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+ 
+<!-- Latest compiled and minified Bootstrap CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" />
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href ="/css/styles.css">
+
+
+<title>Hello, world!</title>
+</head>
+<body>
+   
+
+<section id ="form-space">
+ <header><h1><img src ="https://cdn.iconscout.com/icon/premium/png-512-thumb/draft-1764815-1501695.png" id ="logo" > IITIAN NOTES PRO </h1></header> 
+  
+ 
+ <!--creating a form -->
+ <form action="/push" method ="POST" id ="head">
+        <div class="form-group ">
+            <!--creating description label-->
+
+          <label for="exampleFormControlInput1 ">DESCRIPTION</label>
+          <input type="text" name = "des" class="form-control" id="exampleFormControlInput1" placeholder="What do you need to do?">
+        </div>
+        <div class="form-group">
+          <p>CATEGORY</p>
+              <!--creating dropdown list-->
+ 
+          <select class="form-control" id="exampleFormControlSelect1" name ="cat">
+            <option>Personal</option>
+            <option>Work</option>
+            <option>School</option>
+            <option>Cleaning</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+    <!--creating date labels-->
+
+        <label>DATE</label>
+        <div class="input-group date" data-provide="datepicker" >
+
+
+            <input type="text" class="form-control" placeholder="Enter Date" name ="date">
+
+            <div class="input-group-addon">
+                <span class="glyphicon glyphicon-th"></span>
+            </div>
+        </div>
+            <!--add button-->
+
+    <button type="submit" class="btn btn-primary btn-lg-success hover-btn2 " id = "add" ><i class="fa fa-plus" aria-hidden="true"></i>
+      Add Task</button>    
+
+      
+ 
+     </form>
+
+
+
+<!--creating delete button and passing req to controller-->
+  <form action="/delete-todo" method="GET"  >
+
+     <button type="submit" class="btn btn-primary btn-lg-success hover-btn " id = "del" > 
+      <i class="fa fa-trash"></i> Delete</button>
+
+<!--creating card groups and looping over each card-->
+
+<div id ="cardgroup">
+<% for (let i of do_list) { %>
+
+
+
+<!--creating notes card-->
+<div id = "card"class="card text-white bg-primary mb-3  zoom">
+
+ 
+  <input type="checkbox" class="check" name="id" value="<%=i._id%>">
+  <!--printing response from database-->
+<div class="card-header"><span id ="cat"><%= i.cat %></span></div>
+ <h4><div class="card-text"><span id ="des"><%= i.des %></span></div></h4> 
+
+<br>
+   <h5><p class="card-footer"><span id ="date"><%= i.date %></span></p></h5> 
+ 
+</div>
+<% } %>
+</div>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+    </section>
+    <!--bootstrap part--->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.min.css" rel="stylesheet"/>
+      <script type="text/javascript" src="/js/list.js"></script>
+   
+      
+      
+</body>
+</html>
+
+
